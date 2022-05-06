@@ -4,13 +4,14 @@ import './Nav.css';
 function Nav() {
   const [show, handleShow] = useState(false);
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    let scrollHandler = () => {
       if (window.scrollY > 100) {
         handleShow(true);
       } else handleShow(false);
-    });
+    };
+    window.addEventListener('scroll', scrollHandler);
     return () => {
-      window.removeEventListener('scroll');
+      window.removeEventListener('scroll', scrollHandler);
     };
   }, []);
   return (
